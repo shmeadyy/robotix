@@ -60,14 +60,14 @@ Maze.prototype.isInbounds = function(x, y){
 }
 
 Maze.prototype.canMove = function(x, y, direction){
-	if (this.isValidDirection(direction)){
+	if (!this.isValidDirection(direction)){
 		return false;
 	}
 
   if (!this.isInbounds(x,y)){ //checks if current space is in maze
     return false;
   }
-var forwardX, forwardY;
+	var forwardX, forwardY;
   switch(direction){
   	case "north":
   	  forwardX = x;
@@ -83,7 +83,7 @@ var forwardX, forwardY;
   	  break;
   	case "west":
   	  forwardX = x-1;
-  	  forwardX = y;
+  	  forwardY = y;
   	  break;
   }
 
@@ -97,13 +97,13 @@ var forwardX, forwardY;
   }
 
   var opposites = {
-  	north: "south";
-  	east: "west";
-  	south: "north";
+  	north: "south",
+  	east: "west",
+  	south: "north",
   	west: "east"
   };
 
-  if (this.spaces[forwardX][forwardY][opposites]{  //if there IS a wall there, return false
+  if (this.spaces[forwardX][forwardY][opposites[direction]]){  //look at the space to which we'll be moving, reference the property corresponding to that opposite direciton.  if there IS a wall there, return false
   	return false;
   }
 	return true;
