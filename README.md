@@ -1,0 +1,1 @@
+Task:  Writing a program that moves a robot through a maze using object-oriented Javascript.
